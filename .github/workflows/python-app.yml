@@ -1,14 +1,15 @@
-name: Run Selected Script
+name: Run Python Script
 
 on:
   workflow_dispatch:
     inputs:
       script_name:
-        description: "Name of the script to run (e.g., script1.py)"
+        description: "Nome dello script Python da eseguire"
         required: true
+        default: "Dice rolling simulator.py"
 
 jobs:
-  run-script:
+  run-python-script:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
+          python-version: '3.x'
 
-      - name: Run selected script
-        run: python ${{ github.event.inputs.script_name }}
+      - name: Run selected Python script
+        run: python "${{ github.event.inputs.script_name }}"
